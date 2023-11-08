@@ -9,6 +9,7 @@ sequenceDiagram
     Note right of browser: The browser sends the user input data to the server
 
     server-->>browser: New HTTP GET request to the address specified in the header's location
+    deactivate server
     Note right of browser: Browser reloads notes page and causes three more HTTP requests
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
