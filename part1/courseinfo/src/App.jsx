@@ -1,22 +1,19 @@
-const Hello = (props) => {
-  console.log(props)
-  return (
-    <div>
-      <p>Hello {props.name}, you are {props.age} years old</p>
-    </div>
-  )
-}
+import React from 'react';
 
 const App = () => {
-  const friends = [
-    { name: 'Peter', age: 4 },
-    { name: 'Maya', age: 10 },
-  ]
+  const course = 'Half Stack application development'
+  const part1 = 'Fundamentals of React'
+  const exercises1 = 10
+  const part2 = 'Using props to pass data'
+  const exercises2 = 7
+  const part3 = 'State of a component'
+  const exercises3 = 14
 
   return (
     <div>
-      <p>{friends[0].name} {friends[0].age}</p>
-      <p>{friends[1].name} {friends[1].age}</p>
+      <Header course={course} />
+      <Content />
+      <Total />
     </div>
   )
 }
