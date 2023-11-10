@@ -3,9 +3,9 @@ import React from 'react'
 const Content = () => {
   return (
     <div>
-      <Part .../>
-      <Part .../>
-      <Part .../>
+      <Part />
+      <Part />
+      <Part />
     </div>
   )
 }
