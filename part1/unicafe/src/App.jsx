@@ -41,13 +41,14 @@ const App = () => {
         <p>No feedback given</p>
       ) : (
         <>
-          <h2>statistics</h2>
-          <Statistics text='good' value={good} />
-          <Statistics text='neutral' value={neutral} />
-          <Statistics text='bad' value={bad} />
-          <Statistics text='all' value={total} />
-          <Statistics text='average' value={average || 0} />
-          <Statistics text='positive' value={posPercent || 0}/>
+          <Statistics 
+            good={good} 
+            neutral={neutral} 
+            bad={bad} 
+            total={totalFeedback} 
+            average={average} 
+            posPercent={posPercent}
+          />
         </>
       )}
     </div>
@@ -58,10 +59,25 @@ const App = () => {
 
 export default App
 
-const Button = (props) => {
+const Button = ({ handleClick, text }) => {
   return (
-    <button onClick={props.handleClick}>{props.text}</button>
+    <button onClick={handleClick}>{text}</button>
   )
 }
 
-const Statistics = (props) => <div>{props.text} {props.value}</div>
+const StatisticsLine = ({ text, value }) => <div>{text} {value}</div>
+
+const Statistics = ({ good, neutral, bad, total, average, posPercent }) => {
+
+  return (
+    <div>
+      <h2>statistics</h2>
+      <StatisticsLine text='good' value={good} />
+      <StatisticsLine text='neutral' value={neutral} />
+      <StatisticsLine text='bad' value={bad} />
+      <StatisticsLine text='all' value={total} />
+      <StatisticsLine text='average' value={average || 0} />
+      <StatisticsLine text='positive' value={posPercent || 0}/> 
+    </div>
+  )
+}
