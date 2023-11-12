@@ -5,12 +5,39 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const [total, setTotal] = useState(0)
+  const [count, setCount] = useState(0)
+  const [positive, setPositive] = useState(0)
 
-  const handleGoodClick = () => setGood(good + 1)
-  const handleNeutralClick = () => setNeutral(neutral + 1)
-  const handleBadClick = () => setBad(bad + 1)
-
-
+  const handleGoodClick = () => {
+    //const newGood = good + 1
+    setGood(good + 1) 
+    console.log('good', good)
+    setTotal(total + 1)
+    setPositive(positive + 1)
+    console.log('total', total)
+    setCount(count + 1)
+    console.log('count', count)
+    
+  }
+  const handleNeutralClick = () => {
+    setNeutral(neutral + 1)
+    console.log('neutral', neutral)
+    console.log('total', total)
+    setCount(count + 1)
+    console.log('count', count)
+  }
+  const handleBadClick = () => {
+    setBad(bad + 1)
+    console.log('bad', bad)
+    setTotal(total - 1)
+    console.log('total', total)
+    setCount(count + 1)
+    console.log('count', count)
+  }
+  
+  const average = total / count
+  const posPercent = positive / count
 
   return (
     <div>
@@ -22,10 +49,11 @@ const App = () => {
       </div>
       <h2>statistics</h2>
       <Display text='good' value={good} />
-       
       <Display text='neutral' value={neutral} />
-       
       <Display text='bad' value={bad} />
+      <Display text='all' value={total} />
+      <Display text='average' value={average || 0} />
+      <Display text='positive' value={posPercent || 0}/>
     </div>
   )
 }
