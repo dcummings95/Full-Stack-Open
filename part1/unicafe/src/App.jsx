@@ -10,34 +10,24 @@ const App = () => {
   const [positive, setPositive] = useState(0)
 
   const handleGoodClick = () => {
-    //const newGood = good + 1
     setGood(good + 1) 
-    console.log('good', good)
     setTotal(total + 1)
     setPositive(positive + 1)
-    console.log('total', total)
     setCount(count + 1)
-    console.log('count', count)
-    
   }
   const handleNeutralClick = () => {
     setNeutral(neutral + 1)
-    console.log('neutral', neutral)
-    console.log('total', total)
     setCount(count + 1)
-    console.log('count', count)
   }
   const handleBadClick = () => {
     setBad(bad + 1)
-    console.log('bad', bad)
     setTotal(total - 1)
-    console.log('total', total)
     setCount(count + 1)
-    console.log('count', count)
   }
   
   const average = total / count
   const posPercent = positive / count
+  const totalFeedback = good + neutral + bad; 
 
   return (
     <div>
@@ -47,15 +37,23 @@ const App = () => {
         <Button handleClick={() => handleNeutralClick()} text='neutral'/>
         <Button handleClick={() => handleBadClick()} text='bad'/> 
       </div>
-      <h2>statistics</h2>
-      <Display text='good' value={good} />
-      <Display text='neutral' value={neutral} />
-      <Display text='bad' value={bad} />
-      <Display text='all' value={total} />
-      <Display text='average' value={average || 0} />
-      <Display text='positive' value={posPercent || 0}/>
+      {totalFeedback === 0 ? (
+        <p>No feedback given</p>
+      ) : (
+        <>
+          <h2>statistics</h2>
+          <Statistics text='good' value={good} />
+          <Statistics text='neutral' value={neutral} />
+          <Statistics text='bad' value={bad} />
+          <Statistics text='all' value={total} />
+          <Statistics text='average' value={average || 0} />
+          <Statistics text='positive' value={posPercent || 0}/>
+        </>
+      )}
     </div>
   )
+
+ 
 }
 
 export default App
@@ -66,4 +64,4 @@ const Button = (props) => {
   )
 }
 
-const Display = (props) => <div>{props.text} {props.value}</div>
+const Statistics = (props) => <div>{props.text} {props.value}</div>
