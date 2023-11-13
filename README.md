@@ -1,1 +1,1 @@
-Repository for the FullStackOpen.com course
+Repository with my solutions for FullStackOpen.com course
