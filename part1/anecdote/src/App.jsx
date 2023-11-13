@@ -12,16 +12,25 @@ function App() {
     'The only way to go fast, is to go well.'
   ]
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
 
   const handleAnecdote = () => {
     let randomNumber = Math.floor(Math.random() * 8)
-    console.log(randomNumber)
     setSelected(randomNumber)
   }
+  const handleVote = () => {
+    const newVotes = [...votes]
+    newVotes[selected] += 1;
+    setVotes(newVotes);
+    console.log(newVotes)
+  }
+
   return (
     <div>
       {anecdotes[selected]}
       <br />
+      <p>Has {votes[selected]} votes </p>
+      <Button handleClick={() => handleVote()} text='vote'/>
       <Button handleClick={() => handleAnecdote()} text='next anecdote'/>
     </div>
   )
