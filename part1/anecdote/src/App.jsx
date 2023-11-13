@@ -24,14 +24,25 @@ function App() {
     setVotes(newVotes);
     console.log(newVotes)
   }
-
+  let max = 0
+  let index;
+  for (let i = 0; i < votes.length; i++) {
+    if (votes[i] > max) {
+      max = votes[i]
+      index = i
+    }
+  }
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
       <br />
       <p>Has {votes[selected]} votes </p>
       <Button handleClick={() => handleVote()} text='vote'/>
       <Button handleClick={() => handleAnecdote()} text='next anecdote'/>
+      <h1>Anecdote with most votes</h1>
+      {anecdotes[index]}
+      <p>Has {votes[index]} votes </p>
     </div>
   )
 }
