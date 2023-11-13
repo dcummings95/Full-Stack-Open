@@ -24,7 +24,7 @@ const App = () => {
     setTotal(total - 1)
     setCount(count + 1)
   }
-  
+
   const average = ((total / count) * 100).toFixed(1) + '%'
   const posPercent = ((positive / count) * 100).toFixed(1) + '%'
   const totalFeedback = good + neutral + bad; 
