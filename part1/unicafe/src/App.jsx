@@ -25,8 +25,8 @@ const App = () => {
     setCount(count + 1)
   }
   
-  const average = total / count
-  const posPercent = positive / count
+  const average = ((total / count) * 100).toFixed(1) + '%'
+  const posPercent = ((positive / count) * 100).toFixed(1) + '%'
   const totalFeedback = good + neutral + bad; 
 
   return (
@@ -46,7 +46,7 @@ const App = () => {
             neutral={neutral} 
             bad={bad} 
             total={totalFeedback} 
-            average={average} 
+            average={average}
             posPercent={posPercent}
           />
         </>
@@ -68,16 +68,31 @@ const Button = ({ handleClick, text }) => {
 const StatisticsLine = ({ text, value }) => <div>{text} {value}</div>
 
 const Statistics = ({ good, neutral, bad, total, average, posPercent }) => {
-
   return (
     <div>
       <h2>statistics</h2>
-      <StatisticsLine text='good' value={good} />
-      <StatisticsLine text='neutral' value={neutral} />
-      <StatisticsLine text='bad' value={bad} />
-      <StatisticsLine text='all' value={total} />
-      <StatisticsLine text='average' value={average || 0} />
-      <StatisticsLine text='positive' value={posPercent || 0}/> 
+      <table>
+        <tbody>
+          <tr>
+            <td><StatisticsLine text='good' value={good} /></td>
+          </tr>
+          <tr>
+            <td><StatisticsLine text='neutral' value={neutral} /></td>
+          </tr>
+          <tr>
+            <td><StatisticsLine text='bad' value={bad} /></td>
+          </tr>
+          <tr>
+            <td><StatisticsLine text='all' value={total} /></td>
+          </tr>
+          <tr>
+            <td><StatisticsLine text='average' value={average} /></td>
+          </tr>
+          <tr>
+            <td><StatisticsLine text='positive' value={posPercent}/></td>
+          </tr>
+        </tbody>
+      </table> 
     </div>
-  )
+  );
 }
